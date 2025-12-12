@@ -4,83 +4,118 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Romantic Page</title>
+    <title>Classy Romantic Birthday</title>
 
 <style>
-/* Background Romantic Gradient */
+/* CLASSY LUXURY BACKGROUND */
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff9a9e);
-    background-size: 300% 300%;
-    animation: bgMove 12s ease infinite;
+    background: radial-gradient(circle at top, #ffe4ed, #ffb6cc, #ff8eac, #ff6f99);
+    background-size: 200% 200%;
+    animation: bgFlow 14s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Playfair Display", serif;
     overflow: hidden;
-    font-family: 'Poppins', sans-serif;
 }
 
-/* Smooth romantic gradient animation */
-@keyframes bgMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes bgFlow {
+    0% { background-position: 50% 0%; }
+    50% { background-position: 50% 100%; }
+    100% { background-position: 50% 0%; }
 }
 
-/* Content Box */
+/* GLASS CARD */
 .content {
     text-align: center;
-    color: white;
-    z-index: 2;
-    padding: 20px 30px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
+    padding: 35px 45px;
+    background: rgba(255, 255, 255, 0.20);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    color: #4a2437;
 }
 
+/* TITLE */
 .content h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 35px;
     text-shadow: 0 0 10px rgba(255,255,255,0.8);
 }
 
-/* Button */
+/* GOLD BUTTON */
 .btn {
     display: inline-block;
-    padding: 12px 30px;
-    font-size: 20px;
+    padding: 15px 40px;
+    font-size: 22px;
     font-weight: bold;
-    color: #ff3366;
-    background: white;
-    border-radius: 40px;
+    background: linear-gradient(135deg, #fff4d1, #f7d47b, #e8b755);
+    color: #5a3e24;
     text-decoration: none;
-    box-shadow: 0 0 20px rgba(255,255,255,0.7), 0 0 10px rgba(255,0,0,0.4);
+    border-radius: 40px;
+    box-shadow: 0 0 30px rgba(255,215,130,1);
     transition: 0.3s ease;
     position: relative;
-    overflow: visible;
+    border: 1px solid rgba(255,200,120,0.9);
 }
 
 .btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(255,255,255,1), 0 0 20px rgba(255,0,0,0.6);
+    transform: scale(1.12);
+    box-shadow: 0 0 45px rgba(255,230,160,1);
 }
 
-/* Floating hearts created by JS */
-.heart {
+/* GOLD SPARKLE PARTICLES */
+.particle {
     position: absolute;
+    color: #fce7a4;
     font-size: 20px;
-    animation: rise 1.2s linear forwards;
+    animation: floatUp 1.6s linear forwards;
     pointer-events: none;
-    color: #ff1e73;
+    opacity: 0.95;
 }
 
-@keyframes rise {
+@keyframes floatUp {
     0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-60px) scale(1.6); opacity: 0; }
+    100% { transform: translateY(-80px) scale(1.4); opacity: 0; }
+}
+
+/* SUPER ATTRACTIVE HAPPY BIRTHDAY POPUP */
+.bday {
+    position: absolute;
+    font-size: 45px;
+    font-weight: 900;
+    font-family: "Playfair Display", serif;
+    background: linear-gradient(135deg, #ffecb3, #ffd78a, #ff7aa5, #ff408c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 
+        0 0 20px rgba(255,216,150,0.9),
+        0 0 35px rgba(255,80,140,0.9),
+        0 0 55px rgba(255,50,120,0.7);
+
+    animation: birthdayRise 2.2s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes birthdayRise {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, 20px) scale(0.7);
+    }
+    40% { 
+        opacity: 1; 
+        transform: translate(-50%, -10px) scale(1.15);
+    }
+    100% { 
+        opacity: 0; 
+        transform: translate(-50%, -120px) scale(1);
+    }
 }
 </style>
 
@@ -90,36 +125,12 @@ body {
 <main>
     <div class="content">
         <h1>NINNE IMPRESS CHEYYAN ENTHOKKE CHEYYANO ENTO ❤️</h1>
-        <a href="glow.html" class="btn" id="magicBtn">CLICK TO SEE THE MAGIC ✨</a>
+        <a href="#" class="btn" id="magicBtn">CLICK FOR MAGIC 🎁</a>
     </div>
 </main>
 
 <script>
-// ❤️ Heart Burst Hover Effect
 const btn = document.getElementById("magicBtn");
 
 btn.addEventListener("mouseover", () => {
-    for (let i = 0; i < 5; i++) {
-        createHeart(btn);
-    }
-});
-
-function createHeart(button) {
-    const heart = document.createElement("span");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-
-    const x = Math.random() * button.offsetWidth;
-    heart.style.left = (button.offsetLeft + x - 10) + "px";
-    heart.style.top = (button.offsetTop - 10) + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 1200);
-}
-</script>
-
-</body>
-</html>
+    for (let i = 0;
