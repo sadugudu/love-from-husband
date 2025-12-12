@@ -3,21 +3,123 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <title>Romantic Page</title>
+
+<style>
+/* Background Romantic Gradient */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff9a9e);
+    background-size: 300% 300%;
+    animation: bgMove 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Smooth romantic gradient animation */
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Content Box */
+.content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+}
+
+.content h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff3366;
+    background: white;
+    border-radius: 40px;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(255,255,255,0.7), 0 0 10px rgba(255,0,0,0.4);
+    transition: 0.3s ease;
+    position: relative;
+    overflow: visible;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255,255,255,1), 0 0 20px rgba(255,0,0,0.6);
+}
+
+/* Floating hearts created by JS */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: rise 1.2s linear forwards;
+    pointer-events: none;
+    color: #ff1e73;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-60px) scale(1.6); opacity: 0; }
+}
+</style>
+
 </head>
-
 <body>
-
-<div class="hearts"></div>
 
 <main>
     <div class="content">
         <h1>NINNE IMPRESS CHEYYAN ENTHOKKE CHEYYANO ENTO ❤️</h1>
-        <a href="glow.html" class="btn">CLICK TO SEE THE MAGIC ✨</a>
+        <a href="glow.html" class="btn" id="magicBtn">CLICK TO SEE THE MAGIC ✨</a>
     </div>
 </main>
+
+<script>
+// ❤️ Heart Burst Hover Effect
+const btn = document.getElementById("magicBtn");
+
+btn.addEventListener("mouseover", () => {
+    for (let i = 0; i < 5; i++) {
+        createHeart(btn);
+    }
+});
+
+function createHeart(button) {
+    const heart = document.createElement("span");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    const x = Math.random() * button.offsetWidth;
+    heart.style.left = (button.offsetLeft + x - 10) + "px";
+    heart.style.top = (button.offsetTop - 10) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 1200);
+}
+</script>
 
 </body>
 </html>
